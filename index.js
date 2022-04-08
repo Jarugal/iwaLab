@@ -6,12 +6,13 @@ const http = require("http"),
  let app = express();
  let port = 8000;
  
- app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-app.get("/hello", (res, req)=>{
-    res.json({message: "Hello world"});
-})
+app.use(logger("tiny"));
+app.get("/", (res, req)=>{
+    res.json({message: "Hello world"})
+});
 
- app.listen(port, function(error){
-     console.log("Listening on port: " + port)
+app.listen(port, function(err){
+    console.log("Listening on port: " + port)
  });
